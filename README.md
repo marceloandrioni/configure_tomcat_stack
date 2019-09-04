@@ -1,4 +1,4 @@
-#Installing instructions for Tomcat, THREDDS, ncWMS, ERDDAP and GeoServer
+# Installing instructions for Tomcat, THREDDS, ncWMS, ERDDAP and GeoServer
 
 
 This document contains some simple instructions to install a [Tomcat](http://tomcat.apache.org/) server and deploy [THREDDS](https://github.com/Unidata/thredds) (a.k.a. TDS, a.k.a Thematic Real-time Environmental Distributed Data Services), [ncWMS](https://reading-escience-centre.github.io/ncwms/) (a.k.a. Godiva2, a.k.a. Godiva3), [ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/index.html) and [GeoServer](http://geoserver.org/) over.
@@ -12,14 +12,14 @@ References:
 
 ---
 
-##Install Tomcat
+## Install Tomcat
 
 The main directory will be `/usr/local/tds`. There is no need to run the application as root, it's safer to run as a regular user.
 ```
 sudo mkdir /usr/local/tds
 sudo chown my_user:my_user /usr/local/tds
 ```
-Get latest [Java JDK](https://www.oracle.com/technetwork/pt/java/javase/downloads/index.html). At the time this is `jdk-8u221-linux-x64.tar.gz`. You need to create a Oracle account do download the file, but it is free. 
+Get latest [Java JDK](https://www.oracle.com/technetwork/pt/java/javase/downloads/index.html). At the time this is `jdk-8u221-linux-x64.tar.gz`. You need to create a Oracle account do download the file, but it is free.
 
 ```
 tar -xzvf jdk-8u221-linux-x64.tar.gz -C /usr/local/tds
@@ -161,7 +161,7 @@ To use Tomcat's manager app, it is mandatory to define some extra roles and an u
   <role rolename="manager-status"/>
   <role rolename="ncWMS-admin" />
   <user username="my_user" password="my_password" roles="admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status,ncWMS-admin"/>
-  
+
 </tomcat-users>
 ```
 P.S.: ncWMS-admin will be used to log in ncWMS admin interface.
@@ -171,7 +171,7 @@ Following [Special note about Tomcat](https://github.com/Unidata/thredds/release
 ```
     <Connector port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000"
-               redirectPort="8443" 
+               redirectPort="8443"
                relaxedQueryChars="[]" />
 ```
 
@@ -186,10 +186,10 @@ To stop Tomcat:
 ```
 /usr/local/tds/tomcat/bin/shutdown.sh
 ```
-<img src="./tomcat.png" alt="Tomcat Welcome Page" width="400"/>
-<img src="./tomcat_manager.png" alt="Tomcat Manager App" width="400"/>
+<img src="./images/tomcat.png" alt="Tomcat Welcome Page" width="400"/>
+<img src="./images/tomcat_manager.png" alt="Tomcat Manager App" width="400"/>
 
-##Deploy THREDDS
+## Deploy THREDDS
 
 If everything is working, now it is time do deploy the THREDDS server. Download the latest TDS war file from [Github](https://github.com/Unidata/thredds/releases). At the time this is `tds-4.6.14.war`. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
 
@@ -199,7 +199,7 @@ cp tds-4.6.14.war /usr/local/tds/tomcat/webapps/thredds##4.6.14.war
 
 Go to http://localhost:8080/thredds to check if TDS is up and running.
 
-<img src="./thredds.png" alt="THREDDS" width="400"/>
+<img src="./images/thredds.png" alt="THREDDS" width="400"/>
 
 Now lets change some TDS options. Shutdown Tomcat and edit file `/usr/local/tds/tomcat/content/thredds/catalog.xml` enabling some additional services.
 
@@ -238,7 +238,7 @@ e.g.
 
 [This](https://www.unidata.ucar.edu/software/thredds/current/tds/reference/ThreddsConfigXMLFile.html) shows the documentation for the options available in `threddsConfig.xml` and [this](https://github.com/Unidata/TdsConfig/blob/master/thredds/threddsConfig.xml) shows the actual `threddsConfig.xml` used in the [operational Unidata TDS](https://thredds.unidata.ucar.edu/thredds/catalog/catalog.html). As a side note, you can see the current development version of TDS in action [here](https://thredds-test.unidata.ucar.edu/thredds/catalog/catalog.html).
 
-##Deploy ncWMS
+## Deploy ncWMS
 
 ncWMS is a Web Map Service specialed tailored to serve images/maps reading data from NetCDF files. THREDDS already has a internal version of ncWMS, but installing a standalone version alongside offers some advantages:
 
@@ -254,7 +254,7 @@ cp ncWMS2.war /usr/local/tds/tomcat/webapps/ncWMS2##2.4.1.war
 
 Go to http://localhost:8080/ncWMS2/Godiva3.html to check if ncWMS is up and running. The standard installation comes with no datasets.
 
-<img src="./godiva3.png" alt="Godiva3" width="400"/>
+<img src="./images/godiva3.png" alt="Godiva3" width="400"/>
 
 You can add new datasets using the "Admin interface" in http://localhost:8080/ncWMS2/ . This interface allows the user to apply some definitions by dataset and variable (e.g. name, color range).
 
@@ -262,17 +262,17 @@ To change global app configurations, like what is the default color palette used
 ```
     <context-param>
         <!-- This specifies the default palette to use (i.e. the palette returned by the string "default"). It can be a predefined palette or a string of the form: 0x[AA]RRGGBB,0x[AA]RRGGBB,0x[AA]RRGGBB,... -->
-        <param-name>defaultPalette</param-name>                                 
-        <!-- <param-value>seq-BuYl</param-value> -->                            
-        <param-value>x-Occam</param-value>                                      
-    </context-param> 
+        <param-name>defaultPalette</param-name>
+        <!-- <param-value>seq-BuYl</param-value> -->
+        <param-value>x-Occam</param-value>
+    </context-param>
 ```
 
 By default, all the user configuration files are stored in `$HOME/.ncWMS2`. New color palettes can be created in `$HOME/.ncWMS2/.palettes` and new plot styles in `$HOME/.ncWMS2/.styles`. This same folder holds the `godiva3.properties` file where the user can add extra base or overlay layers in the Godiva3 map. Within this file the user can also change the size of the map from the default (`mapHeight=600, mapWidth=750`) to a size more fitting a widescreen monitor (e.g. `mapHeight=730,
 mapWidth=1180`). If `mapHeight` or `mapWidth` are greater than 1024 pixels, you also need to change the maximum allowed width and height in the `$HOME/.ncWMS2/config.xml` to something like:
 
 ```
-        <maxImageWidth>2048</maxImageWidth>                                     
+        <maxImageWidth>2048</maxImageWidth>
         <maxImageHeight>2048</maxImageHeight>
 ```
 
@@ -285,7 +285,7 @@ New color palette files must have the `.pal` extension and one color per line in
 ```
 def rgb2hex(r, g, b, alpha=100):
 
-    def clamp(x): 
+    def clamp(x):
         return max(0, min(x, 255))
 
     return "#{:02x}{:02x}{:02x}{:02x}".format(
@@ -309,7 +309,7 @@ Palettes can be in #rrbbgg or #aarrbbgg where aa stands for the alpha (opacity) 
 #662506
 ```
 
-<img src="./alpha100.png" alt="Regular Color Palette" width="400"/>
+<img src="./images/alpha100.png" alt="Regular Color Palette" width="400"/>
 
 Adding the alpha channel is specially useful to make the lower bound of a scalar field transparent, so that regions with lower values don't stand out too much. Bellow the same palette, but with the first three levels in different levels of opacity (in hex 33=20%, 66=40%, 99=%60) and all the other levels with full (in hex FF=100%) opacity. The blue that shows comes from the background map.
 
@@ -327,7 +327,7 @@ Adding the alpha channel is specially useful to make the lower bound of a scalar
 #FF993404
 #FF662506
 ```
-<img src="./alpha20to100.png" alt="Color Palette with lower bound in different levels of opacity" width="400"/>
+<img src="./images/alpha20to100.png" alt="Color Palette with lower bound in different levels of opacity" width="400"/>
 
 ### Styles
 
@@ -396,7 +396,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:resc="http://www.res
 </StyledLayerDescriptor>
 ```
 
- <img src="./ncwms_newstyle.png" alt="ncWMS2 New Style" width="400"/>
+ <img src="./images/ncwms_newstyle.png" alt="ncWMS2 New Style" width="400"/>
 
 ncWMS2 even has a tool to test new styles in `http://localhost:8080/ncWMS2/sldtest.html`. Several examples and references can be found in:
 
@@ -408,8 +408,8 @@ ncWMS2 even has a tool to test new styles in `http://localhost:8080/ncWMS2/sldte
 
 [comment]: <> (Find some way to plot current/wind vector over a scalar field like ssh, ssh)
 
-##Deploy ERDDAP
+## Deploy ERDDAP
 @todo
 
-##Deploy GeoServer
+## Deploy GeoServer
 @todo
