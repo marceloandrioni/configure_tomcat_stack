@@ -4,11 +4,11 @@
 This document contains some simple instructions to install a [Tomcat](http://tomcat.apache.org/) server and deploy [THREDDS](https://github.com/Unidata/thredds) (a.k.a. TDS, a.k.a Thematic Real-time Environmental Distributed Data Services), [ncWMS](https://reading-escience-centre.github.io/ncwms/) (a.k.a. Godiva2, a.k.a. Godiva3), [ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/index.html) and [GeoServer](http://geoserver.org/) over.
 
 References:
-[Getting Started With the TDS: Local Test Server Setup](https://www.unidata.ucar.edu/software/thredds/current/tds/tutorial/GettingStarted.html)
-[TDS Reference Documentation](https://www.unidata.ucar.edu/software/thredds/current/tds/reference/)
-[TDS Online Tutorial](https://docs.unidata.ucar.edu/thredds/tds/5.0.0/userguide/tds_tutorial_index.html)
-[ncWMS User Guide](https://reading-escience-centre.gitbooks.io/ncwms-user-guide/content/)
-[EDAL User Guide](https://reading-escience-centre.gitbooks.io/edal-user-guide/)
+- [Getting Started With the TDS: Local Test Server Setup](https://www.unidata.ucar.edu/software/thredds/current/tds/tutorial/GettingStarted.html)
+- [TDS Reference Documentation](https://www.unidata.ucar.edu/software/thredds/current/tds/reference/)
+- [TDS Online Tutorial](https://docs.unidata.ucar.edu/thredds/tds/5.0.0/userguide/tds_tutorial_index.html)
+- [ncWMS User Guide](https://reading-escience-centre.gitbooks.io/ncwms-user-guide/content/)
+- [EDAL User Guide](https://reading-escience-centre.gitbooks.io/edal-user-guide/)
 
 ---
 
