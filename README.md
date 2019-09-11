@@ -276,7 +276,41 @@ mapWidth=1180`). If `mapHeight` or `mapWidth` are greater than 1024 pixels, you 
         <maxImageHeight>2048</maxImageHeight>
 ```
 
-With
+### Add new basemaps and overlay layers
+
+The user can add new basemaps and auxiliary overlay layers following the instructions in `$HOME/.ncWMS/godiva3.properties`. Bellow a example adding two new baselayers based on [Open Street Map](https://www.openstreetmap.org/). The baselayers use OSM data but are made available as a WMS by the good people at [terrestris](https://www.terrestris.de/en). The overlay layer is useful to show places names when dealing with atmospheric data that covers the land.
+
+```
+# Color Basemap by Open Street Map provided by https://www.terrestris.de
+osmcURL=https://ows.terrestris.de/osm/service?
+osmcTitle=OpenStreetMap-terrestris-color
+osmcLayers=OSM-WMS
+osmcProjection=EPSG:4326
+osmcVersion=1.1.1
+osmcFormat=image/png
+osmcOnByDefault=true
+osmcIsOverlay=false
+
+# Gray Basemap by Open Street Map provided by https://www.terrestris.de
+osmgURL=https://ows.terrestris.de/osm-gray/service?
+osmgTitle=OpenStreetMap-terrestris-gray
+osmgLayers=OSM-WMS
+osmgProjection=EPSG:4326
+osmgVersion=1.1.1
+osmgFormat=image/png
+osmgOnByDefault=false
+osmgIsOverlay=false
+
+# Overlay with places names by Open Street Map provided by https://www.terrestris.de
+osmoURL=https://ows.terrestris.de/osm/service?
+osmoTitle=OpenStreetMap-terrestris-overlay
+osmoLayers=OSM-Overlay-WMS
+osmoProjection=EPSG:4326
+osmoVersion=1.1.1
+osmoFormat=image/png
+osmoOnByDefault=false
+osmoIsOverlay=true
+```
 
 ### Color palettes
 
