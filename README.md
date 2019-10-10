@@ -24,7 +24,7 @@ Get latest [Java JDK](https://www.oracle.com/technetwork/pt/java/javase/download
 ```
 tar -xzvf jdk-8u221-linux-x64.tar.gz -C /usr/local/tds
 cd /usr/local/tds
-ln -s jdk1.8.0_2211 java
+ln -s jdk1.8.0_221 java
 ```
 
 Get the latest [Tomcat 8](https://tomcat.apache.org/download-80.cgi). At the time this is `apache-tomcat-8.5.45.tar.gz`. Be careful to download the one listed under `Binary Distributions -> Core` and not one of the others (e.g. Deployer, Source).
