@@ -27,22 +27,22 @@ cd /usr/local/tds
 ln -s jdk1.8.0_241 java
 ```
 
-Get the latest [Tomcat 8](https://tomcat.apache.org/download-80.cgi). At the time this is `apache-tomcat-8.5.45.tar.gz`. Be careful to download the one listed under `Binary Distributions -> Core` and not one of the others (e.g. Deployer, Source).
+Get the latest [Tomcat 8](https://tomcat.apache.org/download-80.cgi). At the time this is `apache-tomcat-8.5.53.tar.gz`. Be careful to download the one listed under `Binary Distributions -> Core` and not one of the others (e.g. Deployer, Source).
 
 ```
-tar -xzvf apache-tomcat-8.5.45.tar.gz -C /usr/local/tds
+tar -xzvf apache-tomcat-8.5.53.tar.gz -C /usr/local/tds
 cd /usr/local/tds
-ln -s apache-tomcat-8.5.45 tomcat
+ln -s apache-tomcat-8.5.53 tomcat
 ```
 
 The directory tree will be:
 ```
 $ /bin/ls -l /usr/local/tds/
 
-apache-tomcat-8.5.45
-java -> jdk1.8.0_221
-jdk1.8.0_221
-tomcat -> apache-tomcat-8.5.45
+apache-tomcat-8.5.53
+java -> jdk1.8.0_241
+jdk1.8.0_241
+tomcat -> apache-tomcat-8.5.53
 ```
 
 Create the file `/usr/local/tds/tomcat/bin/setenv.sh`. This file defines some configurations necessary for Tomcat/TDS.
