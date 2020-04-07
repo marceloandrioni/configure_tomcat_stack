@@ -153,14 +153,14 @@ To use Tomcat's manager app, it is mandatory to define some extra roles and an u
 ```
 <tomcat-users ...>
 
-  <role rolename="admin-gui"/>
-  <role rolename="admin-script"/>
-  <role rolename="manager-gui"/>
-  <role rolename="manager-script"/>
-  <role rolename="manager-jmx"/>
-  <role rolename="manager-status"/>
+  <role rolename="admin-gui" />
+  <role rolename="admin-script" />
+  <role rolename="manager-gui" />
+  <role rolename="manager-script" />
+  <role rolename="manager-jmx" />
+  <role rolename="manager-status" />
   <role rolename="ncWMS-admin" />
-  <user username="my_user" password="my_password" roles="admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status,ncWMS-admin"/>
+  <user username="my_user" password="my_password" roles="admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status,ncWMS-admin" />
 
 </tomcat-users>
 ```
