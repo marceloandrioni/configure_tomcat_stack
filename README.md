@@ -246,10 +246,10 @@ ncWMS is a Web Map Service specialed tailored to serve images/maps reading data 
 - THREDDS has a earlier implementation of ncWMS (version 1.x) than the one available as standalone (version 2.x).
 - it is easier to make small changes in the visualization (e.g. basemap, color pallets) in the standalone version.
 
-Download the latest ncWMS2 war file from [Github](https://github.com/Reading-eScience-Centre/ncwms/releases). At the time this is version 2.4.1. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
+Download the latest ncWMS2 war file from [Github](https://github.com/Reading-eScience-Centre/ncwms/releases). At the time this is version 2.4.2. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
 
 ```
-cp ncWMS2.war /usr/local/tds/tomcat/webapps/ncWMS2##2.4.1.war
+cp ncWMS2.war /usr/local/tds/tomcat/webapps/ncWMS2##2.4.2.war
 ```
 
 Go to http://localhost:8080/ncWMS2/Godiva3.html to check if ncWMS is up and running. The standard installation comes with no datasets.
@@ -258,7 +258,7 @@ Go to http://localhost:8080/ncWMS2/Godiva3.html to check if ncWMS is up and runn
 
 You can add new datasets using the "Admin interface" in http://localhost:8080/ncWMS2/ . This interface allows the user to apply some definitions by dataset and variable (e.g. name, color range).
 
-To change global app configurations, like what is the default color palette used or where the new styles files should be located, the user has to change the file `/usr/local/tds/tomcat/webapps/ncWMS2##2.4.1/WEB-INF/web.xml`. To change the default color palette to a "rainbow" type palette:
+To change global app configurations, like what is the default color palette used or where the new styles files should be located, the user has to change the file `/usr/local/tds/tomcat/webapps/ncWMS2##2.4.2/WEB-INF/web.xml`. To change the default color palette to a "rainbow" type palette:
 ```
     <context-param>
         <!-- This specifies the default palette to use (i.e. the palette returned by the string "default"). It can be a predefined palette or a string of the form: 0x[AA]RRGGBB,0x[AA]RRGGBB,0x[AA]RRGGBB,... -->
