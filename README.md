@@ -10,6 +10,9 @@ References:
 - [ncWMS User Guide](https://reading-escience-centre.gitbooks.io/ncwms-user-guide/content/)
 - [EDAL User Guide](https://reading-escience-centre.gitbooks.io/edal-user-guide/)
 
+Tested on the following system:
+`Linux 5.3.0-46-generic x86_64 GNU/Linux`
+
 ---
 
 ## Install Tomcat
