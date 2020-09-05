@@ -214,9 +214,9 @@ Now lets change some TDS options. Shutdown Tomcat and edit file `/usr/local/tds/
     <service name="wcs"  serviceType="WCS" base="/thredds/wcs/" />
     <service name="wms"  serviceType="WMS" base="/thredds/wms/" />
     <service name="ncss" serviceType="NetcdfSubset" base="/thredds/ncss/" />
-    <service name="ncml" serviceType="NCML" base="/thredds/ncml/"/>
-    <service name="uddc" serviceType="UDDC" base="/thredds/uddc/"/>
-    <service name="iso"  serviceType="ISO" base="/thredds/iso/"/>
+    <service name="ncml" serviceType="NCML" base="/thredds/ncml/" />
+    <service name="uddc" serviceType="UDDC" base="/thredds/uddc/" />
+    <service name="iso"  serviceType="ISO" base="/thredds/iso/" />
   </service>
 ```
 
