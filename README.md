@@ -194,7 +194,7 @@ To stop Tomcat:
 
 ## Deploy THREDDS
 
-If everything is working, now it is time do deploy the THREDDS server. Download the latest TDS war file from [Github](https://github.com/Unidata/thredds/releases). At the time this is `tds-4.6.14.war`. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
+If everything is working, now it is time do deploy the THREDDS server. Download the latest TDS war file from [Github](https://github.com/Unidata/thredds/releases) or [Unidata](https://www.unidata.ucar.edu/downloads/tds/). At the time this is `tds-4.6.14.war`. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
 
 ```
 cp tds-4.6.14.war /usr/local/tds/tomcat/webapps/thredds##4.6.14.war
