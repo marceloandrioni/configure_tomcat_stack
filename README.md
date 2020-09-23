@@ -11,7 +11,7 @@ References:
 - [EDAL User Guide](https://reading-escience-centre.gitbooks.io/edal-user-guide/)
 
 Tested on the following system:
-`Linux 5.3.0-46-generic x86_64 GNU/Linux`
+`Linux 5.4.0-47-generic x86_64 GNU/Linux`
 
 ---
 
@@ -22,30 +22,30 @@ The main directory will be `/usr/local/tds`. There is no need to run the applica
 sudo mkdir /usr/local/tds
 sudo chown my_user:my_user /usr/local/tds
 ```
-Get latest [Java JDK](https://www.oracle.com/technetwork/pt/java/javase/downloads/index.html). At the time this is `jdk-8u241-linux-x64.tar.gz`. You need to create a Oracle account do download the file, but it is free.
+Get latest [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (get the `Linux Compressed Archive`). At the time this is `jdk-11.0.8_linux-x64_bin.tar.gz`. You need to create a Oracle account do download the file, but it is free.
 
 ```
-tar -xzvf jdk-8u241-linux-x64.tar.gz -C /usr/local/tds
+tar -xzvf jdk-11.0.8_linux-x64_bin.tar.gz -C /usr/local/tds
 cd /usr/local/tds
-ln -s jdk1.8.0_241 java
+ln -s jdk-11.0.8 java
 ```
 
-Get the latest [Tomcat 8](https://tomcat.apache.org/download-80.cgi). At the time this is `apache-tomcat-8.5.53.tar.gz`. Be careful to download the one listed under `Binary Distributions -> Core` and not one of the others (e.g. Deployer, Source).
+Get the latest [Tomcat 9](https://tomcat.apache.org/download-90.cgi). At the time this is `apache-tomcat-9.0.38.tar.gz`. Be careful to download the one listed under `Binary Distributions -> Core` and not one of the others (e.g. Deployer, Source).
 
 ```
-tar -xzvf apache-tomcat-8.5.53.tar.gz -C /usr/local/tds
+tar -xzvf apache-tomcat-9.0.38.tar.gz -C /usr/local/tds
 cd /usr/local/tds
-ln -s apache-tomcat-8.5.53 tomcat
+ln -s apache-tomcat-9.0.38
 ```
 
 The directory tree will be:
 ```
 $ /bin/ls -l /usr/local/tds/
 
-apache-tomcat-8.5.53
-java -> jdk1.8.0_241
-jdk1.8.0_241
-tomcat -> apache-tomcat-8.5.53
+apache-tomcat-9.0.38
+java -> jdk-11.0.8
+jdk-11.0.8
+tomcat -> apache-tomcat-9.0.38
 ```
 
 Create the file `/usr/local/tds/tomcat/bin/setenv.sh`. This file defines some configurations necessary for Tomcat/TDS.
@@ -76,7 +76,7 @@ JAVA_PREFS_ROOTS="-Djava.util.prefs.systemRoot=$CATALINA_HOME/content/thredds/ja
 #
 # Some commonly used JAVA_OPTS settings:
 #
-NORMAL="-d64 -Xmx4096m -Xms512m -server -ea"
+NORMAL="-Xmx4096m -Xms512m -server -ea"
 HEAP_DUMP="-XX:+HeapDumpOnOutOfMemoryError"
 HEADLESS="-Djava.awt.headless=true"
 
@@ -117,7 +117,7 @@ JAVA_PREFS_ROOTS="-Djava.util.prefs.systemRoot=$CATALINA_HOME/content/thredds/ja
 #
 # Some commonly used JAVA_OPTS settings:
 #
-NORMAL="-d64 -Xmx4096m -Xms512m -server -ea"
+NORMAL="-Xmx4096m -Xms512m -server -ea"
 HEAP_DUMP="-XX:+HeapDumpOnOutOfMemoryError"
 HEADLESS="-Djava.awt.headless=true"
 
@@ -194,10 +194,10 @@ To stop Tomcat:
 
 ## Deploy THREDDS
 
-If everything is working, now it is time do deploy the THREDDS server. Download the latest TDS war file from [Github](https://github.com/Unidata/thredds/releases) or [Unidata](https://www.unidata.ucar.edu/downloads/tds/). At the time this is `tds-4.6.14.war`. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
+If everything is working, now it is time do deploy the THREDDS server. Download the latest TDS war file from [Github](https://github.com/Unidata/thredds/releases) or [Unidata](https://www.unidata.ucar.edu/downloads/tds/). At the time this is `tds-4.6.15.war`. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
 
 ```
-cp tds-4.6.14.war /usr/local/tds/tomcat/webapps/thredds##4.6.14.war
+cp tds-4.6.15.war /usr/local/tds/tomcat/webapps/thredds##4.6.15.war
 ```
 
 Go to http://localhost:8080/thredds to check if TDS is up and running.
@@ -249,10 +249,10 @@ ncWMS is a Web Map Service specialed tailored to serve images/maps reading data 
 - THREDDS has a earlier implementation of ncWMS (version 1.x) than the one available as standalone (version 2.x).
 - it is easier to make small changes in the visualization (e.g. basemap, color pallets) in the standalone version.
 
-Download the latest ncWMS2 war file from [Github](https://github.com/Reading-eScience-Centre/ncwms/releases). At the time this is version 2.4.2. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
+Download the latest ncWMS2 war file from [Github](https://github.com/Reading-eScience-Centre/ncwms/releases). At the time this is version 2.5. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
 
 ```
-cp ncWMS2.war /usr/local/tds/tomcat/webapps/ncWMS2##2.4.2.war
+cp ncWMS2.war /usr/local/tds/tomcat/webapps/ncWMS2##2.5.war
 ```
 
 Go to http://localhost:8080/ncWMS2/Godiva3.html to check if ncWMS is up and running. The standard installation comes with no datasets.
@@ -261,7 +261,7 @@ Go to http://localhost:8080/ncWMS2/Godiva3.html to check if ncWMS is up and runn
 
 You can add new datasets using the "Admin interface" in http://localhost:8080/ncWMS2/ . This interface allows the user to apply some definitions by dataset and variable (e.g. name, color range).
 
-To change global app configurations, like what is the default color palette used or where the new styles files should be located, the user has to change the file `/usr/local/tds/tomcat/webapps/ncWMS2##2.4.2/WEB-INF/web.xml`. To change the default color palette to a "rainbow" type palette:
+To change global app configurations, like what is the default color palette used or where the new styles files should be located, the user has to change the file `/usr/local/tds/tomcat/webapps/ncWMS2##2.5/WEB-INF/web.xml`. To change the default color palette to a "rainbow" type palette:
 ```
     <context-param>
         <!-- This specifies the default palette to use (i.e. the palette returned by the string "default"). It can be a predefined palette or a string of the form: 0x[AA]RRGGBB,0x[AA]RRGGBB,0x[AA]RRGGBB,... -->
