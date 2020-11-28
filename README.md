@@ -22,30 +22,30 @@ The main directory will be `/usr/local/tds`. There is no need to run the applica
 sudo mkdir /usr/local/tds
 sudo chown my_user:my_user /usr/local/tds
 ```
-Get latest [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (get the `Linux Compressed Archive`). At the time this is `jdk-11.0.8_linux-x64_bin.tar.gz`. You need to create a Oracle account do download the file, but it is free.
+Get latest [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (get the `Linux Compressed Archive`). At the time this is `jdk-11.0.9_linux-x64_bin.tar.gz`. You need to create a Oracle account do download the file, but it is free.
 
 ```
-tar -xzvf jdk-11.0.8_linux-x64_bin.tar.gz -C /usr/local/tds
+tar -xzvf jdk-11.0.9_linux-x64_bin.tar.gz -C /usr/local/tds
 cd /usr/local/tds
-ln -s jdk-11.0.8 java
+ln -s jdk-11.0.9 java
 ```
 
-Get the latest [Tomcat 9](https://tomcat.apache.org/download-90.cgi). At the time this is `apache-tomcat-9.0.38.tar.gz`. Be careful to download the one listed under `Binary Distributions -> Core` and not one of the others (e.g. Deployer, Source).
+Get the latest [Tomcat 9](https://tomcat.apache.org/download-90.cgi). At the time this is `apache-tomcat-9.0.40.tar.gz`. Be careful to download the one listed under `Binary Distributions -> Core` and not one of the others (e.g. Deployer, Source).
 
 ```
-tar -xzvf apache-tomcat-9.0.38.tar.gz -C /usr/local/tds
+tar -xzvf apache-tomcat-9.0.40.tar.gz -C /usr/local/tds
 cd /usr/local/tds
-ln -s apache-tomcat-9.0.38
+ln -s apache-tomcat-9.0.40 tomcat
 ```
 
 The directory tree will be:
 ```
 $ /bin/ls -l /usr/local/tds/
 
-apache-tomcat-9.0.38
-java -> jdk-11.0.8
-jdk-11.0.8
-tomcat -> apache-tomcat-9.0.38
+apache-tomcat-9.0.40
+java -> jdk-11.0.9
+jdk-11.0.9
+tomcat -> apache-tomcat-9.0.40
 ```
 
 Create the file `/usr/local/tds/tomcat/bin/setenv.sh`. This file defines some configurations necessary for Tomcat/TDS.
