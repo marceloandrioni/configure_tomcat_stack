@@ -13,6 +13,9 @@ References:
 Tested on the following system:
 `Linux 5.4.0-47-generic x86_64 GNU/Linux`
 
+:warning: :warning: :warning: Starting with `v2.5` `ncWMW2` [needs Java 11 to run](https://github.com/Reading-eScience-Centre/edal-java/issues/132#issuecomment-697477916). Most of the `thredds` code runs fine with Java11/Tomcat9, but the WMS interface (based on the original `ncWMS`) fails. So the user has to choose between running a full functioning `thredds` and an earlier version (before `v2.5`) of `ncWMS2` using [Java8](https://www.oracle.com/technetwork/pt/java/javase/downloads/index.html) and [Tomcat8](https://tomcat.apache.org/download-80.cgi) or running the latest version of `ncWMS2` and a `thredds` without WMS capabilities using [Java11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) and [Tomcat9](https://tomcat.apache.org/download-90.cgi).
+
+
 ---
 
 ## Install Tomcat
@@ -22,30 +25,30 @@ The main directory will be `/usr/local/tds`. There is no need to run the applica
 sudo mkdir /usr/local/tds
 sudo chown my_user:my_user /usr/local/tds
 ```
-Get latest [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (get the `Linux Compressed Archive`). At the time this is `jdk-11.0.9_linux-x64_bin.tar.gz`. You need to create a Oracle account do download the file, but it is free.
+Get latest [Java JDK](https://www.oracle.com/technetwork/pt/java/javase/downloads/index.html) (get the `Linux Compressed Archive`). At the time this is `jdk-8u271-linux-x64.tar.gz`. You need to create a Oracle account do download the file, but it is free.
 
 ```
-tar -xzvf jdk-11.0.9_linux-x64_bin.tar.gz -C /usr/local/tds
+tar -xzvf jdk-8u271-linux-x64.tar.gz -C /usr/local/tds
 cd /usr/local/tds
-ln -s jdk-11.0.9 java
+ln -s jdk1.8.0_271 java
 ```
 
-Get the latest [Tomcat 9](https://tomcat.apache.org/download-90.cgi). At the time this is `apache-tomcat-9.0.40.tar.gz`. Be careful to download the one listed under `Binary Distributions -> Core` and not one of the others (e.g. Deployer, Source).
+Get the latest [Tomcat](https://tomcat.apache.org/download-80.cgi). At the time this is `apache-tomcat-8.5.60.tar.gz`. Be careful to download the one listed under `Binary Distributions -> Core` and not one of the others (e.g. Deployer, Source).
 
 ```
-tar -xzvf apache-tomcat-9.0.40.tar.gz -C /usr/local/tds
+tar -xzvf apache-tomcat-8.5.60.tar.gz -C /usr/local/tds
 cd /usr/local/tds
-ln -s apache-tomcat-9.0.40 tomcat
+ln -s apache-tomcat-8.5.60 tomcat
 ```
 
 The directory tree will be:
 ```
 $ /bin/ls -l /usr/local/tds/
 
-apache-tomcat-9.0.40
-java -> jdk-11.0.9
-jdk-11.0.9
-tomcat -> apache-tomcat-9.0.40
+apache-tomcat-8.5.60
+java -> jdk1.8.0_271
+jdk1.8.0_271
+tomcat -> apache-tomcat-8.5.60
 ```
 
 Create the file `/usr/local/tds/tomcat/bin/setenv.sh`. This file defines some configurations necessary for Tomcat/TDS.
@@ -249,10 +252,10 @@ ncWMS is a Web Map Service specialed tailored to serve images/maps reading data 
 - THREDDS has a earlier implementation of ncWMS (version 1.x) than the one available as standalone (version 2.x).
 - it is easier to make small changes in the visualization (e.g. basemap, color pallets) in the standalone version.
 
-Download the latest ncWMS2 war file from [Github](https://github.com/Reading-eScience-Centre/ncwms/releases). At the time this is version 2.5. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
+Download the ncWMS2 war file from [Github](https://github.com/Reading-eScience-Centre/ncwms/releases). The lastest version compatilble with Java8/Tomcat8 is v2.4.2 (see warning above). Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
 
 ```
-cp ncWMS2.war /usr/local/tds/tomcat/webapps/ncWMS2##2.5.war
+cp ncWMS2.war /usr/local/tds/tomcat/webapps/ncWMS2##2.4.2.war
 ```
 
 Go to http://localhost:8080/ncWMS2/Godiva3.html to check if ncWMS is up and running. The standard installation comes with no datasets.
@@ -261,7 +264,7 @@ Go to http://localhost:8080/ncWMS2/Godiva3.html to check if ncWMS is up and runn
 
 You can add new datasets using the "Admin interface" in http://localhost:8080/ncWMS2/ . This interface allows the user to apply some definitions by dataset and variable (e.g. name, color range).
 
-To change global app configurations, like what is the default color palette used or where the new styles files should be located, the user has to change the file `/usr/local/tds/tomcat/webapps/ncWMS2##2.5/WEB-INF/web.xml`. To change the default color palette to a "rainbow" type palette:
+To change global app configurations, like what is the default color palette used or where the new styles files should be located, the user has to change the file `/usr/local/tds/tomcat/webapps/ncWMS2##2.4.2/WEB-INF/web.xml`. To change the default color palette to a "rainbow" type palette:
 ```
     <context-param>
         <!-- This specifies the default palette to use (i.e. the palette returned by the string "default"). It can be a predefined palette or a string of the form: 0x[AA]RRGGBB,0x[AA]RRGGBB,0x[AA]RRGGBB,... -->
