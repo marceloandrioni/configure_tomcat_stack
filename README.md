@@ -6,7 +6,7 @@ This document contains some simple instructions to install a [Tomcat](http://tom
 References:
 - [Getting Started With the TDS: Local Test Server Setup](https://www.unidata.ucar.edu/software/thredds/current/tds/tutorial/GettingStarted.html)
 - [TDS Reference Documentation](https://www.unidata.ucar.edu/software/thredds/current/tds/reference/)
-- [TDS Online Tutorial](https://docs.unidata.ucar.edu/thredds/tds/5.0.0/userguide/tds_tutorial_index.html)
+- [TDS Online Tutorial](https://docs.unidata.ucar.edu/tds/5.0/userguide/index.html)
 - [ncWMS User Guide](https://reading-escience-centre.gitbooks.io/ncwms-user-guide/content/)
 - [EDAL User Guide](https://reading-escience-centre.gitbooks.io/edal-user-guide/)
 
