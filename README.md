@@ -9,6 +9,8 @@ References:
 - [TDS Online Tutorial](https://docs.unidata.ucar.edu/tds/5.0/userguide/index.html)
 - [ncWMS User Guide](https://reading-escience-centre.gitbooks.io/ncwms-user-guide/content/)
 - [EDAL User Guide](https://reading-escience-centre.gitbooks.io/edal-user-guide/)
+- [ERDDAP Setup](https://coastwatch.pfeg.noaa.gov/erddap/download/setup.html)
+- [ERDDAP Datasets Setup](https://coastwatch.pfeg.noaa.gov/erddap/download/setupDatasetsXml.html)
 
 Tested on the following system:
 `Linux 5.4.0-47-generic x86_64 GNU/Linux`
