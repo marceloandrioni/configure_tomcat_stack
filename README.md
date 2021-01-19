@@ -15,7 +15,7 @@ References:
 Tested on the following system:
 `Linux 5.4.0-47-generic x86_64 GNU/Linux`
 
-:warning: :warning: :warning: Starting with `v2.5` `ncWMW2` [needs Java 11 to run](https://github.com/Reading-eScience-Centre/edal-java/issues/132#issuecomment-697477916). Most of the `thredds` code runs fine with Java11/Tomcat9, but the WMS interface (based on the original `ncWMS`) fails. So the user has to choose between running a full functioning `thredds` and an earlier version (before `v2.5`) of `ncWMS2` using [Java8](https://www.oracle.com/technetwork/pt/java/javase/downloads/index.html) and [Tomcat8](https://tomcat.apache.org/download-80.cgi) or running the latest version of `ncWMS2` and a `thredds` without WMS capabilities using [Java11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) and [Tomcat9](https://tomcat.apache.org/download-90.cgi).
+:warning: :warning: :warning: Starting with `ncWMW2 v2.5` [needs Java 11 to run](https://github.com/Reading-eScience-Centre/edal-java/issues/132#issuecomment-697477916). Most of the `thredds` code runs fine with Java11/Tomcat9, but the WMS interface (based on the original `ncWMS`) fails. So the user has to choose between running a full functioning `thredds` and an earlier version (before `v2.5`) of `ncWMS2` using [Java8](https://www.oracle.com/technetwork/pt/java/javase/downloads/index.html) and [Tomcat8](https://tomcat.apache.org/download-80.cgi) or running the latest version of `ncWMS2` and a `thredds` without WMS capabilities using [Java11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) and [Tomcat9](https://tomcat.apache.org/download-90.cgi).
 
 
 ---
@@ -202,6 +202,17 @@ It may be useful to allow Tomcat to follow symlinks in the system to serve files
 `ln -s /some/dir /usr/local/tds/tomcat/webapps/mydir`
 
 would permit access to the file in `http://localhost:8080/mydir/test.txt`.
+
+Also, to allow the users to list the content of a directory instead of getting an error page, edit `/usr/local/tds/tomcat/conf/web.xml` and set the block 
+
+```
+<init-param>
+    <param-name>listings</param-name>
+    <param-value>false</param-value>
+</init-param>
+```
+
+to `true`. This way, in the previous example the user could access `http://localhost:8080/mydir` to see the content of the `mydir` directory (including file `test.txt`).
 
 ## Deploy THREDDS
 
