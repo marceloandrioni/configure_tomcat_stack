@@ -197,6 +197,12 @@ To stop Tomcat:
 <img src="./images/tomcat.png" alt="Tomcat Welcome Page" width="400"/>
 <img src="./images/tomcat_manager.png" alt="Tomcat Manager App" width="400"/>
 
+It may be useful to allow Tomcat to follow symlinks in the system to serve files outside the `/usr/local/tds/tomcat/webapps` directory. To do this, edit file `/usr/local/tds/tomcat/conf/context.xml` adding `<Resources allowLinking="true" />` inside the `Context` block and restart Tomcat. Now it is possible to create a link to any place in the file system and have access in Tomcat. E.g.: assuming the file `/some/dir/test.txt` exists, running
+
+`ln -s /some/dir /usr/local/tds/tomcat/webapps/mydir`
+
+would permit access to the file in `http://localhost:8080/mydir/test.txt`.
+
 ## Deploy THREDDS
 
 If everything is working, now it is time do deploy the THREDDS server. Download the latest TDS war file from [Github](https://github.com/Unidata/thredds/releases) or [Unidata](https://www.unidata.ucar.edu/downloads/tds/). At the time this is `tds-4.6.15.war`. Make a copy of the file following Tomcat naming conventions. If Tomcat is running, the war file will be automatically unpacked.
