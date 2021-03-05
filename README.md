@@ -260,6 +260,13 @@ e.g.
     <maxAge>-1 min</maxAge>
   </NetcdfSubsetService>
 ```
+and set the Aggregation to always use the global attributes of the first file:
+```
+  <Aggregation>                                                                                                                                                               
+    <typicalDataset>first</typicalDataset>                                
+  </Aggregation>
+```
+
 
 [This](https://www.unidata.ucar.edu/software/thredds/current/tds/reference/ThreddsConfigXMLFile.html) shows the documentation for the options available in `threddsConfig.xml` and [this](https://github.com/Unidata/TdsConfig/blob/master/thredds/threddsConfig.xml) shows the actual `threddsConfig.xml` used in the [operational Unidata TDS](https://thredds.unidata.ucar.edu/thredds/catalog/catalog.html). As a side note, you can see the current development version of TDS in action [here](https://thredds-test.unidata.ucar.edu/thredds/catalog/catalog.html).
 
