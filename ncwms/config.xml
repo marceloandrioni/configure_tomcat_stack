@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config>
+    <datasets>
+        <dataset id="cmems" title="CMEMS" location="http://localhost:8080/thredds/dodsC/datasets/cmems/cmems_forecast_20210101.nc" queryable="true" downloadable="true" dataReaderClass="" copyrightStatement="" moreInfo="" disabled="false" updateInterval="-1">
+            <variables>
+                <variable id="vo" title="Northward velocity" description="Northward velocity" palette="default" belowMinColor="#FF000000" aboveMaxColor="#FF000000" noDataColor="transparent" numColorBands="250" colorScaleRange="-0.8878 0.5564" scaling="linear"/>
+                <variable id="uo" title="Eastward velocity" description="Eastward velocity" palette="default" belowMinColor="#FF000000" aboveMaxColor="#FF000000" noDataColor="transparent" numColorBands="250" colorScaleRange="-0.5812 0.5763" scaling="linear"/>
+                <variable id="thetao" title="Temperature" description="Temperature" palette="default" belowMinColor="#FF000000" aboveMaxColor="#FF000000" noDataColor="transparent" numColorBands="250" colorScaleRange="22.57 28.4" scaling="linear"/>
+                <variable id="zos" title="Sea surface height" description="Sea surface height" palette="default" belowMinColor="#FF000000" aboveMaxColor="#FF000000" noDataColor="transparent" numColorBands="250" colorScaleRange="0.02441 0.387" scaling="linear"/>
+                <variable id="uo:vo-group" title="sea_water_velocity" description="Vector fields for sea_water_velocity" palette="default" belowMinColor="#FF000000" aboveMaxColor="#FF000000" noDataColor="transparent" numColorBands="250" colorScaleRange="-0.03736 0.9293" scaling="linear"/>
+                <variable id="uo:vo-mag" title="Magnitude of sea water velocity" description="Magnitude of components:&#10;Eastward velocity and&#10;Northward velocity" palette="default" belowMinColor="#FF000000" aboveMaxColor="#FF000000" noDataColor="transparent" numColorBands="250" colorScaleRange="-0.03736 0.9293" scaling="linear"/>
+                <variable id="uo:vo-dir" title="Direction of sea water velocity" description="Direction of components:&#10;Eastward velocity and&#10;Northward velocity" palette="default" belowMinColor="#FF000000" aboveMaxColor="#FF000000" noDataColor="transparent" numColorBands="250" colorScaleRange="-197.9 198.0" scaling="linear"/>
+            </variables>
+        </dataset>
+    </datasets>
+    <cache enabled="true">
+        <inMemorySizeMB>512</inMemorySizeMB>
+        <elementLifetimeMinutes>0.0</elementLifetimeMinutes>
+    </cache>
+    <dynamicServices/>
+    <dynamicCache enabled="true">
+        <numberOfDatasets>10</numberOfDatasets>
+        <elementLifetimeMinutes>0.0</elementLifetimeMinutes>
+    </dynamicCache>
+    <contact>
+        <name></name>
+        <organization></organization>
+        <telephone></telephone>
+        <email></email>
+    </contact>
+    <server>
+        <title>ncWMS Server</title>
+        <allowFeatureInfo>true</allowFeatureInfo>
+        <maxImageWidth>1024</maxImageWidth>
+        <maxImageHeight>1024</maxImageHeight>
+        <abstract></abstract>
+        <keywords></keywords>
+        <url></url>
+        <allowglobalcapabilities>true</allowglobalcapabilities>
+    </server>
+    <crsCodes/>
+</config>
