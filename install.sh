@@ -9,7 +9,7 @@ wd="/usr/local/tds"
 jdk_tar="jdk-11.0.12_linux-x64_bin.tar.gz"
 tomcat_tar="apache-tomcat-8.5.72.tar.gz"
 thredds_war="thredds##5.0.war"
-ncwms_war="ncWMS2##2.5.0.war"
+ncwms_war="ncWMS2##2.5.1.war"
 
 ncwms_dir=$HOME/.ncWMS2   # default dir for ncWMS2 conf files
 
