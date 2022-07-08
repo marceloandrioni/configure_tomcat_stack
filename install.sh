@@ -6,10 +6,10 @@
 #   thredds/catalog.xml
 wd="/usr/local/tds"
 
-jdk_tar="jdk-11.0.12_linux-x64_bin.tar.gz"
-tomcat_tar="apache-tomcat-8.5.72.tar.gz"
-thredds_war="thredds##5.0.war"
-ncwms_war="ncWMS2##2.5.1.war"
+jdk_tar="jdk-11.0.15.1_linux-x64_bin.tar.gz"
+tomcat_tar="apache-tomcat-8.5.81.tar.gz"
+thredds_war="thredds##5.4.war"
+ncwms_war="ncWMS2##2.5.2.war"
 
 ncwms_dir=$HOME/.ncWMS2   # default dir for ncWMS2 conf files
 
@@ -95,11 +95,11 @@ sleep 60s
 # -----------------------------------------------------------------------------
 # show main webpages
 
-firefox http://localhost:8080
-firefox http://localhost:8080/manager
+browse http://localhost:8080 &
+browse http://localhost:8080/manager &
 echo "Use the user/password defined in tomcat-users.xml to log in the manager app."
-firefox http://localhost:8080/thredds
-firefox http://localhost:8080/ncWMS2/Godiva3.html
+browse http://localhost:8080/thredds &
+browse http://localhost:8080/ncWMS2/Godiva3.html &
 
 echo "Commands to start/stop Tomcat"
 echo "$wd/tomcat/bin/startup.sh"
