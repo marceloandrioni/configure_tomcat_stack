@@ -6,10 +6,10 @@
 #   thredds/catalog.xml
 wd="/usr/local/tds"
 
-jdk_tar="jdk-11.0.12_linux-x64_bin.tar.gz"
-tomcat_tar="apache-tomcat-8.5.72.tar.gz"
-thredds_war="thredds##5.0.war"
-ncwms_war="ncWMS2##2.5.1.war"
+jdk_tar="jdk-11.0.15.1_linux-x64_bin.tar.gz"
+tomcat_tar="apache-tomcat-8.5.81.tar.gz"
+thredds_war="thredds##5.4.war"
+ncwms_war="ncWMS2##2.5.2.war"
 
 ncwms_dir=$HOME/.ncWMS2   # default dir for ncWMS2 conf files
 
@@ -17,7 +17,7 @@ ncwms_dir=$HOME/.ncWMS2   # default dir for ncWMS2 conf files
                         exit 1 ; }
 [ -s "$tomcat_tar" ] || { echo "File $tomcat_tar not found, please download the 'Binary Distributions >> Core >> tar.gz' from https://tomcat.apache.org/download-80.cgi" ;
                           exit 1 ; }
-[ -s "$thredds_war" ] || { echo "File $thredds_war not found, please download it from https://www.unidata.ucar.edu/downloads/tds/" ;
+[ -s "$thredds_war" ] || { echo "File $thredds_war not found, please download it from https://downloads.unidata.ucar.edu/tds/" ;
                           exit 1 ; }
 [ -s "$ncwms_war" ] || { echo "File $ncwms_war not found, please download it from https://github.com/Reading-eScience-Centre/ncwms/releases" ;
                           exit 1 ; }
