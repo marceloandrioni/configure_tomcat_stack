@@ -95,11 +95,11 @@ sleep 60s
 # -----------------------------------------------------------------------------
 # show main webpages
 
-firefox http://localhost:8080
-firefox http://localhost:8080/manager
+browse http://localhost:8080 &
+browse http://localhost:8080/manager &
 echo "Use the user/password defined in tomcat-users.xml to log in the manager app."
-firefox http://localhost:8080/thredds
-firefox http://localhost:8080/ncWMS2/Godiva3.html
+browse http://localhost:8080/thredds &
+browse http://localhost:8080/ncWMS2/Godiva3.html &
 
 echo "Commands to start/stop Tomcat"
 echo "$wd/tomcat/bin/startup.sh"
